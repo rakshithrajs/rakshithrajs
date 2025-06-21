@@ -99,25 +99,3 @@ const rakshith = {
 
 </div>
 
----
-
-## 🤝 Let's Connect!
-
-I'm always excited to collaborate on interesting projects, especially those involving AI, robotics, or innovative web applications. Whether you have an idea, want to discuss technology, or just chat about algorithms and cubes, feel free to reach out!
-
-<div align="center">
-
-[![Email](https://img.shields.io/badge/Email-rakshithrajr@gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:rakshithrajr@gmail.com)
-[![GitHub](https://img.shields.io/badge/GitHub-rakshithrajs-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/rakshithrajs)
-
-</div>
-
----
-
-<div align="center">
-
-💡 *"Learning never stops, and every problem is just a puzzle waiting to be solved."*
-
-![Profile Views](https://komarev.com/ghpvc/?username=rakshithrajs&color=blueviolet&style=flat-square)
-
-</div>
