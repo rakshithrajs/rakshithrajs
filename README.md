@@ -75,8 +75,8 @@ const rakshith = {
 
 <div align="center">
 
-<img height="180em" src="https://github-readme-stats.vercel.app/api?username=rakshithrajs&show_icons=true&theme=github_dark&include_all_commits=true&count_private=true&hide_border=true&bg_color=0d1117"/>
-<img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=rakshithrajs&layout=compact&langs_count=8&theme=github_dark&hide_border=true&bg_color=0d1117"/>
+<img height="180em" src="https://github-readme-stats.vercel.app/api?username=rakshithrajs&theme=vision-friendly-dark&show_icons=true&hide_border=true&count_private=false" alt="Rakshith Raj S commit stats"/>
+<img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=rakshithrajs&layout=compact&langs_count=8&theme=github_dark&hide_border=true&bg_color=0d1117" alt="Rakshith Raj S Language Stats"/>
 
 </div>
 
