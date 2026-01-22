@@ -1,4 +1,4 @@
-# Hi there! 👋 I'm Rakshith Raj
+# Hi there! I'm Rakshith Raj
 
 <div align="center">
 
