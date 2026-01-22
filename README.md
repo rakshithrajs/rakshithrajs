@@ -1,4 +1,4 @@
-# Hi there! I'm Rakshith Raj
+# Hi there! I'm Rakshith Raju
 
 <div align="center">
 
@@ -18,7 +18,7 @@ const rakshith = {
     currentFocus: "Proactive AI Agents",
     learning: ["Large Language Models", "Neural Networks", "AI Architecture"],
     interests: ["AI/ML", "Robotics", "Full-Stack Development"],
-    funFact: "Can solve Rubik's Cube in under 30 seconds! 🧩",
+    funFact: "Can solve Rubik's Cube in under 30 seconds! ",
     status: "Always ready to collaborate on exciting projects"
 };
 ```
