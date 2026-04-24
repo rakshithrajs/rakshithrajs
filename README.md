@@ -210,37 +210,36 @@ flowchart LR
 
 <br/>
 
-<!-- === TRED === -->
+<!-- === EMAIL-INSPECTOR === -->
 <details>
 <summary>
-<img src="https://img.shields.io/badge/🧠-TRED-00f0ff?style=for-the-badge&labelColor=030508" height="26" alt=""/>
-&nbsp;<b>RAG Intelligence Platform</b>
-&nbsp;<img src="https://img.shields.io/badge/ACTIVE-f59e0b?style=flat-square&labelColor=030508" alt=""/>
+<img src="https://img.shields.io/badge/📬-Email_Inspector-00f0ff?style=for-the-badge&labelColor=030508" height="26" alt=""/>
+&nbsp;<b>RAG over your Gmail — ask your inbox anything</b>
+&nbsp;<img src="https://img.shields.io/badge/SHIPPED-10b981?style=flat-square&labelColor=030508" alt=""/>
 </summary>
 
 <br/>
 
-> Turns a folder of documents into a colleague you can ask questions to.
+> Your inbox, but it answers back.
 
-**The problem:** Every company is sitting on terabytes of PDFs, wikis, and tickets that nobody reads.  
-**The approach:** Ingest → embed → hybrid-search → LLM with citations → agent loop for follow-ups.  
-**Why it's different:** Most RAG demos retrieve. This one *reasons* — it knows when to ask a follow-up, when to admit it doesn't know, and when to go fetch more context.
+Full RAG pipeline over a Gmail label: ingests emails via the Gmail API, embeds + stores them in a **Redis vector store**, and answers natural-language questions with context-grounded LLM responses. Dockerized end-to-end.
 
 ```mermaid
 %%{init:{'theme':'dark','themeVariables':{'primaryColor':'#0a0f1a','primaryTextColor':'#e2e8f0','lineColor':'#00f0ff','primaryBorderColor':'#00f0ff'}}}%%
 flowchart LR
-    A[📄 Docs] --> B[Chunk + Embed]
-    B --> C[(Vector Store)]
-    D[❓ Question] --> E[Hybrid Retrieve]
-    C --> E
-    E --> F{Enough<br/>context?}
-    F -- yes --> G[LLM + Citations]
-    F -- no  --> H[Agent · expand query]
-    H --> E
-    G --> I[💬 Answer]
+    G[📨 Gmail API] -->|label filter| I[Ingest]
+    I --> E[Embed]
+    E --> R[(Redis<br/>Vector Store)]
+    Q[❓ Question] --> S[Semantic Search]
+    R --> S
+    S --> C[Context pack]
+    C --> L[🦙 Local LLM<br/>llama.cpp]
+    L --> A[💬 Grounded Answer]
 ```
 
-`FastAPI` · `React` · `TypeScript` · `Vector Store` · `LLM`
+**What makes it real:** local llama.cpp inference, Docker Compose stack, FastAPI endpoints (`/ingest`, `/ask`), proper OAuth flow for Gmail.
+
+`FastAPI` · `Redis` · `Gmail API` · `llama.cpp` · `Docker` · `uv`
 
 </details>
 
@@ -248,20 +247,54 @@ flowchart LR
 <details>
 <summary>
 <img src="https://img.shields.io/badge/📡-SignalScope-a855f7?style=for-the-badge&labelColor=030508" height="26" alt=""/>
-&nbsp;<b>News Intelligence Engine</b>
-&nbsp;<img src="https://img.shields.io/badge/ACTIVE-f59e0b?style=flat-square&labelColor=030508" alt=""/>
+&nbsp;<b>News intelligence — topics, sentiment, spikes</b>
+&nbsp;<img src="https://img.shields.io/badge/SHIPPED-10b981?style=flat-square&labelColor=030508" alt=""/>
 </summary>
 
 <br/>
 
-> Reads the news so you don't have to — and tells you what's about to matter.
+> Detects what's about to matter before the headlines catch up.
 
-- **Ingest**: RSS + news APIs (thousands of articles/day)
-- **Sentiment**: VADER lexicon for financial/political tone
-- **Topics**: NMF decomposition → emerging topic clusters
-- **Surface**: Dash + Plotly interactive dashboard
+End-to-end pipeline: **ingest → clean → sentiment → topics → trends → dashboard**. Backed by SQLite so runs are reproducible; works with live NewsAPI / NewsData.io or deterministic mock data for offline dev.
 
-`Dash` · `Plotly` · `scikit-learn` · `NLTK` · `VADER` · `NMF`
+```mermaid
+%%{init:{'theme':'dark','themeVariables':{'primaryColor':'#0a0f1a','primaryTextColor':'#e2e8f0','lineColor':'#a855f7','primaryBorderColor':'#a855f7'}}}%%
+flowchart LR
+    N[📰 NewsAPI] --> IN[Ingest]
+    IN --> DB[(SQLite)]
+    DB --> PP[Clean · NLTK]
+    PP --> SA[VADER sentiment]
+    PP --> TM[NMF topics]
+    SA --> TR[Trend + spike<br/>detection]
+    TM --> TR
+    TR --> D[📊 Plotly Dash]
+```
+
+- 200+ articles per run · TF-IDF + NMF topic extraction · spike scoring per topic
+
+`Python` · `Dash` · `Plotly` · `scikit-learn` · `NLTK` · `VADER` · `SQLite`
+
+</details>
+
+<!-- === ATS-MATCHER === -->
+<details>
+<summary>
+<img src="https://img.shields.io/badge/📄-ATS_Matcher-ec4899?style=for-the-badge&labelColor=030508" height="26" alt=""/>
+&nbsp;<b>LLM-powered resume tailoring with guardrails</b>
+&nbsp;<img src="https://img.shields.io/badge/SHIPPED-10b981?style=flat-square&labelColor=030508" alt=""/>
+</summary>
+
+<br/>
+
+> Tailors your resume to a job description — without hallucinating experience you don't have.
+
+Local FastAPI + React web app. Feed in a JD, it produces an ATS-optimized resume with **strict validation guardrails** so the LLM can't invent facts. Compiles the final PDF through `latexonline.cc`, provider-agnostic LLM client.
+
+- **Guardrails layer** — validates every claim against your source resume
+- **LaTeX output** — typographically clean, ATS-parseable
+- **Zero DB** — JSON files, fully portable
+
+`FastAPI` · `React` · `Vite` · `Tailwind` · `LLM` · `LaTeX` · `uv`
 
 </details>
 
@@ -269,7 +302,7 @@ flowchart LR
 <details>
 <summary>
 <img src="https://img.shields.io/badge/✂️-Self--Prune-10b981?style=for-the-badge&labelColor=030508" height="26" alt=""/>
-&nbsp;<b>Neural Network Pruning Research</b>
+&nbsp;<b>Neural network pruning research</b>
 &nbsp;<img src="https://img.shields.io/badge/SHIPPED-10b981?style=flat-square&labelColor=030508" alt=""/>
 </summary>
 
@@ -277,24 +310,24 @@ flowchart LR
 
 > Made a neural net **81.77% smaller** without throwing it in a wood chipper.
 
-| metric | before | after |
+| metric | baseline | pruned |
 |---|---|---|
-| **parameters** | 100% | **18.23%** |
-| **accuracy (CIFAR-10)** | 57% | 54% |
-| **inference (edge)** | 1x | **~4.8x faster** |
+| **parameters retained** | 100% | **18.23%** |
+| **accuracy (CIFAR-10)** | ~57% | ~54% |
+| **edge inference** | 1x | **~4.8x** faster |
 | **memory footprint** | 💾💾💾💾💾 | 💾 |
 
-Why care? A pruned model runs on an ESP32. An un-pruned one doesn't.
+Trained and ablated on CIFAR-10 with iterative gating + magnitude pruning. Gate-distribution plots per layer. *A pruned model fits on an ESP32. An un-pruned one doesn't.*
 
-`PyTorch` · `Iterative Magnitude Pruning` · `CIFAR-10`
+`PyTorch` · `Iterative Magnitude Pruning` · `CIFAR-10` · `Research`
 
 </details>
 
 <!-- === MICROMOUSE === -->
 <details>
 <summary>
-<img src="https://img.shields.io/badge/🐭-MicroMouse-10b981?style=for-the-badge&labelColor=030508" height="26" alt=""/>
-&nbsp;<b>Autonomous Maze Solver</b>
+<img src="https://img.shields.io/badge/🐭-MicroMouse-f59e0b?style=for-the-badge&labelColor=030508" height="26" alt=""/>
+&nbsp;<b>Autonomous maze-solving robot</b>
 &nbsp;<img src="https://img.shields.io/badge/SHIPPED-10b981?style=flat-square&labelColor=030508" alt=""/>
 </summary>
 
@@ -302,12 +335,45 @@ Why care? A pruned model runs on an ESP32. An un-pruned one doesn't.
 
 > A tiny C++ robot that walks into a maze it's never seen and walks out through the fastest path.
 
-- Flood-fill + A* pathfinding
-- Sensor fusion (IR + encoders)
-- Desktop simulator with GUI for strategy replay
-- From-scratch firmware, no framework
+Flood-fill + A\* pathfinding, sensor fusion (IR + encoders), and a desktop **GUI simulator** for strategy replay before flashing to metal. Built from first principles — no Arduino abstraction.
 
-`C++` · `CMake` · `Embedded` · `Robotics` · `A*`
+`C++` · `CMake` · `A*` · `Flood-fill` · `Embedded` · `GUI Sim`
+
+</details>
+
+<!-- === VOTING SYSTEM === -->
+<details>
+<summary>
+<img src="https://img.shields.io/badge/🗳️-SecureVote-10b981?style=for-the-badge&labelColor=030508" height="26" alt=""/>
+&nbsp;<b>Online voting system with OTP + JWT</b>
+&nbsp;<img src="https://img.shields.io/badge/SHIPPED-10b981?style=flat-square&labelColor=030508" alt=""/>
+</summary>
+
+<br/>
+
+> Democracy demands trust. This stack is how you earn it.
+
+MERN-stack voting platform with **one-time OTP per voter**, JWT sessions, bcrypt-hashed credentials, express-session state, and MongoDB persistence. Built with the threat model in mind — replay, double-vote, and session hijack all accounted for.
+
+`Node.js` · `Express` · `MongoDB` · `JWT` · `bcrypt` · `otp-generator` · `express-session`
+
+</details>
+
+<!-- === VYADH === -->
+<details>
+<summary>
+<img src="https://img.shields.io/badge/🌌-Vyadh-a855f7?style=for-the-badge&labelColor=030508" height="26" alt=""/>
+&nbsp;<b>3D web experience — React + Three.js</b>
+&nbsp;<img src="https://img.shields.io/badge/ACTIVE-f59e0b?style=flat-square&labelColor=030508" alt=""/>
+</summary>
+
+<br/>
+
+> Because a regular site scrolls. This one moves.
+
+React 19 + **react-three-fiber** + **Drei** for 3D scenes, **GSAP** + **Framer Motion** for choreography, **tsParticles** for atmosphere, **EmailJS** for contact — all on Tailwind 4 + Vite. A portfolio that ships actual webGL.
+
+`React 19` · `Three.js` · `R3F` · `Drei` · `GSAP` · `Framer Motion` · `tsParticles` · `Tailwind 4`
 
 </details>
 
@@ -315,67 +381,35 @@ Why care? A pruned model runs on an ESP32. An un-pruned one doesn't.
 <details>
 <summary>
 <img src="https://img.shields.io/badge/🔐-LiSeCo-00f0ff?style=for-the-badge&labelColor=030508" height="26" alt=""/>
-&nbsp;<b>Lightweight Secure Comms</b>
+&nbsp;<b>Lightweight secure comms for microcontrollers</b>
 &nbsp;<img src="https://img.shields.io/badge/ACTIVE-f59e0b?style=flat-square&labelColor=030508" alt=""/>
 </summary>
 
 <br/>
 
-> Crypto that runs on a microcontroller with 64 KB of RAM.
+> Crypto that runs on a chip with 64 KB of RAM.
 
-Cross-platform encryption layer for device↔device talk on STM32/ESP32. Python on one side, C on the other, same wire format. Designed for swarms, drones, and IoT meshes that can't trust the air.
+Cross-platform secure communication protocol for embedded devices. Python on the host, C on the MCU, **same wire format**. Designed for swarms, drones, and IoT meshes that can't trust the air between them.
 
-`Python` · `C` · `Cryptography` · `ESP32` · `STM32`
-
-</details>
-
-<!-- === STM32 MOTOR === -->
-<details>
-<summary>
-<img src="https://img.shields.io/badge/⚙️-STM32_Motor-f59e0b?style=for-the-badge&labelColor=030508" height="26" alt=""/>
-&nbsp;<b>Precision Motor Control</b>
-&nbsp;<img src="https://img.shields.io/badge/ACTIVE-f59e0b?style=flat-square&labelColor=030508" alt=""/>
-</summary>
-
-<br/>
-
-> Real-time PWM + feedback control stack for robotic actuators — built from HAL primitives, no Arduino layer.
-
-`C` · `STM32 HAL` · `PWM` · `CMake` · `Real-time`
+`C` · `Python` · `Cryptography` · `STM32` · `ESP32` · `Embedded Security`
 
 </details>
 
-<!-- === VYADH === -->
+<!-- === TEAMS AUTOMATION === -->
 <details>
 <summary>
-<img src="https://img.shields.io/badge/🌐-Vyadh-ec4899?style=for-the-badge&labelColor=030508" height="26" alt=""/>
-&nbsp;<b>3D Web Experience</b>
-&nbsp;<img src="https://img.shields.io/badge/ACTIVE-f59e0b?style=flat-square&labelColor=030508" alt=""/>
-</summary>
-
-<br/>
-
-> Because a regular website is boring. Three.js, GSAP, Framer Motion, particle fields — the works.
-
-`React 19` · `Three.js` · `R3F` · `GSAP` · `Framer Motion` · `tsParticles` · `TailwindCSS 4`
-
-</details>
-
-<!-- === AUTOMATIONS === -->
-<details>
-<summary>
-<img src="https://img.shields.io/badge/🤖-Automations-7a8ba6?style=for-the-badge&labelColor=030508" height="26" alt=""/>
-&nbsp;<b>Teams Bot · Email Inspector · ATS Matcher</b>
+<img src="https://img.shields.io/badge/☎️-Teams_Automation-7a8ba6?style=for-the-badge&labelColor=030508" height="26" alt=""/>
+&nbsp;<b>CLI that controls Microsoft Teams for you</b>
 &nbsp;<img src="https://img.shields.io/badge/SHIPPED-10b981?style=flat-square&labelColor=030508" alt=""/>
 </summary>
 
 <br/>
 
-| tool | what it does | stack |
-|---|---|---|
-| **Teams Automation** | UI-level Windows bot that runs Teams workflows while you sleep | `pywinauto` |
-| **Email Inspector** | ML classifier that triages inbox chaos | `scikit-learn` · `NLP` |
-| **ATS Matcher** | Scores resumes against job descriptions so real humans don't have to | `Python` · `NLP` · `TF-IDF` |
+> Because clicking "Call" 40 times a day is beneath a software engineer.
+
+Windows-UI-automation CLI for Teams. Initiates calls to any user, audio **or** video, with configurable duration, JSON + env + CLI config layers, and a keyboard-shortcut fallback for when the Teams DOM shifts. Full logging.
+
+`Python` · `pywinauto` · `Windows UI Automation` · `CLI`
 
 </details>
 
@@ -472,9 +506,9 @@ gitGraph
    merge ml id: "intelligent systems"
    branch ai-agents
    checkout ai-agents
-   commit id: "RAG"
-   commit id: "TRED"
-   commit id: "SignalScope"
+   commit id: "Email Inspector ✓"
+   commit id: "SignalScope ✓"
+   commit id: "ATS Matcher ✓"
    checkout main
    merge ai-agents id: "proactive code ✨"
    commit id: "M.Tech @ VIT"
@@ -494,9 +528,9 @@ gitGraph
 
 ### 🔭 Building
 
-- **TRED** — agentic RAG
-- **SignalScope** — trend signals
-- **LiSeCo** — secure meshes
+- **Email Inspector** → agentic Gmail
+- **Vyadh** → shipping 3D portfolio
+- **LiSeCo** → secure device meshes
 
 </td>
 <td width="33%" valign="top">
