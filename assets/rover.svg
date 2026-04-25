@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 320" width="880" height="320" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14">
+  <defs>
+    <radialGradient id="sky" cx="50%" cy="100%" r="120%">
+      <stop offset="0%" stop-color="#3a1208"/>
+      <stop offset="40%" stop-color="#15060a"/>
+      <stop offset="100%" stop-color="#05030a"/>
+    </radialGradient>
+    <linearGradient id="dust" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ff7a3d" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#7a2410" stop-opacity="0.55"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="880" height="320" fill="url(#sky)"/>
+
+  <!-- distant planet -->
+  <circle cx="720" cy="70" r="28" fill="#2a1a30" opacity="0.85"/>
+  <circle cx="712" cy="64" r="6" fill="#3a2640" opacity="0.9"/>
+  <circle cx="730" cy="78" r="4" fill="#1d1024" opacity="0.9"/>
+
+  <!-- stars -->
+  <g fill="#f6e7d3">
+    <circle cx="40"  cy="40"  r="1.1"><animate attributeName="opacity" values="0.2;1;0.2" dur="3.1s" repeatCount="indefinite"/></circle>
+    <circle cx="120" cy="80"  r="0.9"><animate attributeName="opacity" values="1;0.1;1"   dur="2.4s" repeatCount="indefinite"/></circle>
+    <circle cx="200" cy="30"  r="1.3"><animate attributeName="opacity" values="0.3;1;0.3" dur="4.2s" repeatCount="indefinite"/></circle>
+    <circle cx="280" cy="90"  r="0.8"><animate attributeName="opacity" values="0.6;0.1;0.6" dur="2.0s" repeatCount="indefinite"/></circle>
+    <circle cx="360" cy="50"  r="1.0"><animate attributeName="opacity" values="0.2;1;0.2" dur="3.7s" repeatCount="indefinite"/></circle>
+    <circle cx="450" cy="25"  r="1.4"><animate attributeName="opacity" values="1;0.2;1"   dur="2.8s" repeatCount="indefinite"/></circle>
+    <circle cx="540" cy="70"  r="0.9"><animate attributeName="opacity" values="0.4;1;0.4" dur="3.3s" repeatCount="indefinite"/></circle>
+    <circle cx="610" cy="35"  r="1.1"><animate attributeName="opacity" values="0.2;0.9;0.2" dur="4.6s" repeatCount="indefinite"/></circle>
+    <circle cx="660" cy="100" r="0.8"><animate attributeName="opacity" values="0.7;0.1;0.7" dur="2.2s" repeatCount="indefinite"/></circle>
+    <circle cx="780" cy="55"  r="1.2"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.9s" repeatCount="indefinite"/></circle>
+    <circle cx="840" cy="95"  r="1.0"><animate attributeName="opacity" values="0.5;1;0.5" dur="2.6s" repeatCount="indefinite"/></circle>
+  </g>
+
+  <!-- shooting star -->
+  <g stroke="#ffd9b5" stroke-width="1" opacity="0.9">
+    <line x1="0" y1="0" x2="40" y2="10">
+      <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.7;0.78;0.86;1" dur="9s" repeatCount="indefinite"/>
+    </line>
+    <animateTransform attributeName="transform" type="translate" values="100,20; 760,140" keyTimes="0;1" dur="9s" repeatCount="indefinite"/>
+  </g>
+
+  <!-- distant ridge silhouette -->
+  <text x="0" y="210" fill="#3a160c" opacity="0.85" xml:space="preserve">      ._.        .--.            ___                  .-.            .--.        ._.
+   .-'   '-.   .-'    '-.    .--'   '--.    _.--.   .-'   '-.    .--'    '-.   .-'   '-.</text>
+
+  <!-- mid ridge -->
+  <text x="0" y="232" fill="#5a210f" opacity="0.95" xml:space="preserve">  __        .-.       __         .--.        ___        .-.        .--.         __        .-.
+ /  '-.   .-'   '-.  /  '-.    .-'    '-.   .'   '.   .-'   '-.   .'    '-.    /  '-.   .-'   '-.</text>
+
+  <!-- foreground terrain -->
+  <text x="0" y="262" fill="#a14223" xml:space="preserve">~^~..~^~..~~^~..~^~..~~^~..~^~..~~^~..~^~..~~^~..~^~..~~^~..~^~..~~^~..~^~..~~^~..~^~..~~^~..</text>
+  <text x="0" y="278" fill="#7a2c14" xml:space="preserve">. , . . , . , .  . , . , . . , . , . , . . , . , . . , . , . , . . , . , . . , . , . , . . , .</text>
+  <text x="0" y="294" fill="#5a1d0c" xml:space="preserve">_._.._._._.._._._.._._._.._._._.._._._.._._._.._._._.._._._.._._._.._._._.._._._.._._._.._._.</text>
+  <text x="0" y="310" fill="#3d1308" xml:space="preserve">._. . _._. . _._. . _._. . _._. . _._. . _._. . _._. . _._. . _._. . _._. . _._. . _._. . _._.</text>
+
+  <!-- rover -->
+  <g>
+    <animateTransform attributeName="transform" type="translate"
+      values="-180,0; 920,0" keyTimes="0;1" dur="14s" repeatCount="indefinite"/>
+
+    <!-- subtle bobbing -->
+    <g>
+      <animateTransform attributeName="transform" type="translate"
+        values="0,0; 0,-1.5; 0,0; 0,-1; 0,0" keyTimes="0;0.25;0.5;0.75;1" dur="0.6s" repeatCount="indefinite"/>
+
+      <!-- antenna signal -->
+      <g stroke="#ffd9b5" fill="none" stroke-width="1" opacity="0.85">
+        <path d="M 250 178 q 8 -8 16 0">
+          <animate attributeName="opacity" values="0;1;0" dur="1.2s" repeatCount="indefinite"/>
+        </path>
+        <path d="M 250 178 q 12 -14 24 0">
+          <animate attributeName="opacity" values="0;1;0" dur="1.2s" begin="0.3s" repeatCount="indefinite"/>
+        </path>
+        <path d="M 250 178 q 16 -20 32 0">
+          <animate attributeName="opacity" values="0;1;0" dur="1.2s" begin="0.6s" repeatCount="indefinite"/>
+        </path>
+      </g>
+
+      <!-- ASCII rover body -->
+      <text x="100" y="190" fill="#ffd9b5" xml:space="preserve">           |</text>
+      <text x="100" y="202" fill="#f0c08a" xml:space="preserve">         __|__</text>
+      <text x="100" y="214" fill="#e6b070" xml:space="preserve">     ___/ SOL \___</text>
+      <text x="100" y="226" fill="#d99a55" xml:space="preserve">    |  [ . ][ . ]  |</text>
+      <text x="100" y="238" fill="#c98442" xml:space="preserve">    |__===========__|</text>
+      <text x="100" y="250" fill="#b87038" xml:space="preserve">       /         \</text>
+
+      <!-- wheels -->
+      <g stroke="#1a0a06" stroke-width="1.5" fill="#2a1208">
+        <g transform="translate(132 256)">
+          <circle r="7" fill="#1a0a06"/>
+          <g stroke="#d99a55" stroke-width="1.2">
+            <line x1="-5" y1="0" x2="5" y2="0"/>
+            <line x1="0" y1="-5" x2="0" y2="5"/>
+            <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="0.8s" repeatCount="indefinite"/>
+          </g>
+        </g>
+        <g transform="translate(168 256)">
+          <circle r="7" fill="#1a0a06"/>
+          <g stroke="#d99a55" stroke-width="1.2">
+            <line x1="-5" y1="0" x2="5" y2="0"/>
+            <line x1="0" y1="-5" x2="0" y2="5"/>
+            <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="0.8s" repeatCount="indefinite"/>
+          </g>
+        </g>
+        <g transform="translate(204 256)">
+          <circle r="7" fill="#1a0a06"/>
+          <g stroke="#d99a55" stroke-width="1.2">
+            <line x1="-5" y1="0" x2="5" y2="0"/>
+            <line x1="0" y1="-5" x2="0" y2="5"/>
+            <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="0.8s" repeatCount="indefinite"/>
+          </g>
+        </g>
+      </g>
+
+      <!-- dust puffs -->
+      <g fill="#ffb27a">
+        <text x="90" y="270" xml:space="preserve">. ° .</text>
+        <animate attributeName="opacity" values="0;0.7;0" dur="0.9s" repeatCount="indefinite"/>
+      </g>
+      <g fill="#ff9c5a">
+        <text x="80" y="278" xml:space="preserve">· ° ·</text>
+        <animate attributeName="opacity" values="0;0.5;0" dur="1.1s" begin="0.3s" repeatCount="indefinite"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- low atmospheric haze -->
+  <rect x="0" y="240" width="880" height="80" fill="url(#dust)" opacity="0.35"/>
+</svg>
