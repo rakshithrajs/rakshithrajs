@@ -64,12 +64,17 @@ Pinned repos below — that's the short list. Everything else lives in the [repo
 
 <div align="center">
 
-<img height="170" src="https://github-readme-stats.vercel.app/api?username=rakshithrajs&show_icons=true&hide_border=true&include_all_commits=true&count_private=true&rank_icon=github&bg_color=0d1117&title_color=e6edf3&text_color=c9d1d9&icon_color=e6edf3" alt="github stats" />
-<img height="170" src="https://streak-stats.demolab.com?user=rakshithrajs&hide_border=true&background=0d1117&stroke=0d1117&ring=e6edf3&fire=e6edf3&currStreakLabel=e6edf3&sideLabels=c9d1d9&dates=c9d1d9&currStreakNum=e6edf3&sideNums=e6edf3" alt="streak" />
+<img height="195" src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=rakshithrajs&theme=github_dark" alt="github stats" />
+<img height="195" src="https://streak-stats.demolab.com?user=rakshithrajs&hide_border=true&background=0d1117&stroke=0d1117&ring=e6edf3&fire=e6edf3&currStreakLabel=e6edf3&sideLabels=c9d1d9&dates=c9d1d9&currStreakNum=e6edf3&sideNums=e6edf3" alt="streak" />
 
 <br />
 
-<img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=rakshithrajs&layout=compact&hide_border=true&langs_count=10&bg_color=0d1117&title_color=e6edf3&text_color=c9d1d9" alt="top languages" />
+<img height="195" src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=rakshithrajs&theme=github_dark&exclude=html,css" alt="top languages by repo" />
+<img height="195" src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=rakshithrajs&theme=github_dark" alt="most commit language" />
+
+<br />
+
+<img height="195" src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=rakshithrajs&theme=github_dark&utcOffset=5.5" alt="productive time" />
 
 <br /><br />
 
